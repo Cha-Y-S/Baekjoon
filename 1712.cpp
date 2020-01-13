@@ -8,16 +8,22 @@ int main() {
 
 	cin >> fix >> var >> sell;
 
-	if (sell - var <= 0)
+	if (sell <= var)
 		cout << -1 << endl;
 	else {
-		for (;; cnt++) {
-			if (fix + (var * cnt) < sell * cnt) {
-				cout << cnt << endl;
-				break;
-			}
-		}
+		while (cnt <= fix / (sell - var))
+			cnt++;
+		cout << cnt << endl;
 	}
-
+	
 	return 0;
 }
+/*
+a - 고정비용, b - 가변비용, c - 판매가격
+총 비용 = A + B*n
+판매비용 > 가변비용
+A + B*n < C*n
+A < (c-b)*n
+n > a/(c-b), n>=0
+c-b > 0, c>b
+*/
